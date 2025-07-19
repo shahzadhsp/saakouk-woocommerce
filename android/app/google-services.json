@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "608033125499",
+    "project_id": "saakouk-pos",
+    "storage_bucket": "saakouk-pos.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:608033125499:android:d24afccbb3130865bc1ede",
+        "android_client_info": {
+          "package_name": "com.example.saakouk"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBv-Hj5dIG5x0t9dBxzkGu0uRoFAFdKHro"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
