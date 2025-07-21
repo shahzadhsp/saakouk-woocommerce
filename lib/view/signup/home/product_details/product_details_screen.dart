@@ -16,12 +16,14 @@ class ProductDetailsScreen extends StatelessWidget {
       backgroundColor: AppColors.whiteColor,
       appBar: AppBar(
         centerTitle: true,
+
         leading: InkWell(
           onTap: () => Navigator.pop(context),
           child: const Icon(Icons.arrow_back, color: Colors.black),
         ),
         title: Text(product.name, style: const TextStyle(color: Colors.black)),
-        backgroundColor: AppColors.whiteColor,
+        backgroundColor: Colors.transparent,
+        surfaceTintColor: Colors.transparent,
         elevation: 0,
       ),
       body: Padding(

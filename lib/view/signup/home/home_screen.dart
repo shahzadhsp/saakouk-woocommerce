@@ -478,166 +478,155 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       Padding(
                         padding: const EdgeInsets.all(12.0),
-                        child: Expanded(
-                          child: GridView.builder(
-                            physics: const NeverScrollableScrollPhysics(),
-                            shrinkWrap: true,
-                            itemCount: topSelling.length,
-                            gridDelegate:
-                                const SliverGridDelegateWithFixedCrossAxisCount(
-                                  crossAxisCount: 2,
-                                  crossAxisSpacing: 12,
-                                  mainAxisSpacing: 12,
-                                  childAspectRatio: 0.75,
-                                ),
-                            itemBuilder: (context, index) {
-                              final product = topSelling[index];
-                              return GestureDetector(
-                                onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder:
-                                          (_) => ProductDetailsScreen(
-                                            product: product,
-                                          ),
-                                    ),
-                                  );
-                                },
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(12),
-                                    boxShadow: const [
-                                      BoxShadow(
-                                        color: Colors.black12,
-                                        blurRadius: 4,
-                                      ),
-                                    ],
-                                  ),
-                                  padding: const EdgeInsets.all(8),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Expanded(
-                                        child: Container(
-                                          decoration: BoxDecoration(
-                                            color: Colors.deepPurple.shade100,
-                                            borderRadius: BorderRadius.circular(
-                                              8,
-                                            ),
-                                          ),
-                                          child:
-                                              product.imageUrl.isNotEmpty
-                                                  ? ClipRRect(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                          8,
-                                                        ),
-                                                    child: Image.network(
-                                                      product.imageUrl,
-                                                      fit: BoxFit.cover,
-                                                      width: double.infinity,
-                                                    ),
-                                                  )
-                                                  : const Center(
-                                                    child: Icon(
-                                                      Icons.image,
-                                                      size: 40,
-                                                    ),
-                                                  ),
+                        child: GridView.builder(
+                          physics: const NeverScrollableScrollPhysics(),
+                          shrinkWrap: true,
+                          itemCount: topSelling.length,
+                          gridDelegate:
+                              const SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 2,
+                                crossAxisSpacing: 12,
+                                mainAxisSpacing: 12,
+                                childAspectRatio: 0.75,
+                              ),
+                          itemBuilder: (context, index) {
+                            final product = topSelling[index];
+                            return GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder:
+                                        (_) => ProductDetailsScreen(
+                                          product: product,
                                         ),
-                                      ),
-                                      SizedBox(height: 8.h),
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Column(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.start,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                topSelling[index].name.length >
-                                                        10
-                                                    ? '${topSelling[index].name.substring(0, 10)}...'
-                                                    : topSelling[index].name,
-                                                style:
-                                                    Theme.of(
-                                                      context,
-                                                    ).textTheme.labelMedium,
-                                              ),
-                                              SizedBox(height: 4.h),
-                                              Text(
-                                                topSelling[index].price
-                                                    .toString(),
-                                                style: const TextStyle(
-                                                  color: Colors.green,
-                                                ),
-                                              ),
-                                              Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  FutureBuilder<String?>(
-                                                    future:
-                                                        getRackByProductName(
-                                                          topSelling[index]
-                                                              .name,
-                                                        ),
-                                                    builder: (
-                                                      context,
-                                                      snapshot,
-                                                    ) {
-                                                      final rack =
-                                                          snapshot.data ??
-                                                          'Unknown Rack';
-                                                      return Text(
-                                                        '$rack',
-                                                        style: const TextStyle(
-                                                          fontSize: 12,
-                                                          color:
-                                                              AppColors
-                                                                  .blackColor,
-                                                        ),
-                                                      );
-                                                    },
-                                                  ),
-                                                  GestureDetector(
-                                                    onTap:
-                                                        () =>
-                                                            showRackUpdateDialog(
-                                                              context,
-                                                              topSelling[index]
-                                                                  .name,
-                                                            ),
-                                                    child: const Icon(
-                                                      Icons.edit,
-                                                      size: 20,
-                                                      color: Colors.blue,
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ],
-                                          ),
-                                          Icon(Icons.favorite_border),
-                                        ],
-                                      ),
-                                    ],
                                   ),
+                                );
+                              },
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(12),
+                                  boxShadow: const [
+                                    BoxShadow(
+                                      color: Colors.black12,
+                                      blurRadius: 4,
+                                    ),
+                                  ],
                                 ),
-                              );
-                            },
-                          ),
+                                padding: const EdgeInsets.all(8),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Expanded(
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                          color: Colors.deepPurple.shade100,
+                                          borderRadius: BorderRadius.circular(
+                                            8,
+                                          ),
+                                        ),
+                                        child:
+                                            product.imageUrl.isNotEmpty
+                                                ? ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadius.circular(8),
+                                                  child: Image.network(
+                                                    product.imageUrl,
+                                                    fit: BoxFit.cover,
+                                                    width: double.infinity,
+                                                  ),
+                                                )
+                                                : const Center(
+                                                  child: Icon(
+                                                    Icons.image,
+                                                    size: 40,
+                                                  ),
+                                                ),
+                                      ),
+                                    ),
+                                    SizedBox(height: 8.h),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              topSelling[index].name.length > 10
+                                                  ? '${topSelling[index].name.substring(0, 10)}...'
+                                                  : topSelling[index].name,
+                                              style:
+                                                  Theme.of(
+                                                    context,
+                                                  ).textTheme.labelMedium,
+                                            ),
+                                            SizedBox(height: 4.h),
+                                            Text(
+                                              topSelling[index].price
+                                                  .toString(),
+                                              style: const TextStyle(
+                                                color: Colors.green,
+                                              ),
+                                            ),
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                FutureBuilder<String?>(
+                                                  future: getRackByProductName(
+                                                    topSelling[index].name,
+                                                  ),
+                                                  builder: (context, snapshot) {
+                                                    final rack =
+                                                        snapshot.data ??
+                                                        'Unknown Rack';
+                                                    return Text(
+                                                      '$rack',
+                                                      style: const TextStyle(
+                                                        fontSize: 12,
+                                                        color:
+                                                            AppColors
+                                                                .blackColor,
+                                                      ),
+                                                    );
+                                                  },
+                                                ),
+                                                GestureDetector(
+                                                  onTap:
+                                                      () =>
+                                                          showRackUpdateDialog(
+                                                            context,
+                                                            topSelling[index]
+                                                                .name,
+                                                          ),
+                                                  child: const Icon(
+                                                    Icons.edit,
+                                                    size: 20,
+                                                    color: Colors.blue,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                        Icon(Icons.favorite_border),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            );
+                          },
                         ),
                       ),
                       SizedBox(height: 20.h),

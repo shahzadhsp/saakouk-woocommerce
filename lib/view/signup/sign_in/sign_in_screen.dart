@@ -23,6 +23,53 @@ class _SignInScreenState extends State<SignInScreen> {
   bool _isLoading = false;
   String? _errorMessage;
 
+  // Future<void> _signInWithEmailAndPassword() async {
+  //   if (!_formKey.currentState!.validate()) return;
+
+  //   setState(() {
+  //     _isLoading = true;
+  //     _errorMessage = null;
+  //   });
+
+  //   try {
+  //     final userCredential = await FirebaseAuth.instance
+  //         .signInWithEmailAndPassword(
+  //           email: emailController.text.trim(),
+  //           password: passwordController.text.trim(),
+  //         );
+
+  //     if (userCredential.user != null) {
+  //       if (mounted) {
+  //         Navigator.pushReplacement(
+  //           context,
+  //           MaterialPageRoute(
+  //             builder: (context) => MainNavigation(userType: widget.userType),
+  //           ),
+  //         );
+  //       } else {
+  //         ScaffoldMessenger.of(
+  //           context,
+  //         ).showSnackBar(SnackBar(content: Text('Something went wrong')));
+  //       }
+  //     }
+  //   } on FirebaseAuthException catch (e) {
+  //     setState(() {
+  //       _errorMessage = _getErrorMessage(e);
+  //     });
+  //   } catch (e) {
+  //     setState(() {
+  //       _errorMessage = 'An unexpected error occurred';
+  //     });
+  //     debugPrint('Sign in error: $e');
+  //   } finally {
+  //     if (mounted) {
+  //       setState(() {
+  //         _isLoading = false;
+  //       });
+  //     }
+  //   }
+  // }
+
   Future<void> _signInWithEmailAndPassword() async {
     if (!_formKey.currentState!.validate()) return;
 
@@ -39,24 +86,37 @@ class _SignInScreenState extends State<SignInScreen> {
           );
 
       if (userCredential.user != null) {
-        if (mounted) {
-          Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(
-              builder: (context) => MainNavigation(userType: widget.userType),
-            ),
-          );
-        }
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => MainNavigation(userType: widget.userType),
+          ),
+        );
       }
     } on FirebaseAuthException catch (e) {
       setState(() {
         _errorMessage = _getErrorMessage(e);
       });
+
+      // ❌ No navigation here — only show error
+      // if (mounted) {
+      //   ScaffoldMessenger.of(
+      //     context,
+      //   ).showSnackBar(SnackBar(content: Text(_errorMessage!)));
+      // }
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text(_errorMessage!)));
     } catch (e) {
       setState(() {
         _errorMessage = 'An unexpected error occurred';
       });
-      debugPrint('Sign in error: $e');
+
+      if (mounted) {
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text('Unexpected error: $e')));
+      }
     } finally {
       if (mounted) {
         setState(() {
@@ -209,15 +269,15 @@ class _SignInScreenState extends State<SignInScreen> {
                                     if (_formKey.currentState!.validate()) {
                                       // Perform sign in
                                       _signInWithEmailAndPassword();
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder:
-                                              (context) => HomeScreen(
-                                                userType: widget.userType,
-                                              ),
-                                        ),
-                                      );
+                                      // Navigator.push(
+                                      //   context,
+                                      //   MaterialPageRoute(
+                                      //     builder:
+                                      //         (context) => HomeScreen(
+                                      //           userType: widget.userType,
+                                      //         ),
+                                      //   ),
+                                      // );
                                     }
                                   },
                                   style: ElevatedButton.styleFrom(
