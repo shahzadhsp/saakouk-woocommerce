@@ -294,7 +294,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                       _isLoading
                                           ? CircularProgressIndicator(
                                             strokeWidth: 4.w,
-                                            color: AppColors.blackColor,
+                                            color: AppColors.whiteColor,
                                           )
                                           : Text(
                                             'Sign In',
@@ -319,26 +319,26 @@ class _SignInScreenState extends State<SignInScreen> {
                                         .copyWith(fontWeight: FontWeight.w500),
                                   ),
                                   SizedBox(width: 6.w),
-                                  GestureDetector(
-                                    onTap: () {
-                                      // Navigator.push(
-                                      //   context,
-                                      //   MaterialPageRoute(
-                                      //     builder:
-                                      //         (context) => const SignUpScreen(),
-                                      //   ),
-                                      // );
-                                    },
-                                    child: Text(
-                                      "Sign Up",
-                                      style: Theme.of(
-                                        context,
-                                      ).textTheme.bodyLarge!.copyWith(
-                                        fontWeight: FontWeight.w500,
-                                        color: Colors.blue,
-                                      ),
-                                    ),
-                                  ),
+                                  // GestureDetector(
+                                  //   onTap: () {
+                                  //     // Navigator.push(
+                                  //     //   context,
+                                  //     //   MaterialPageRoute(
+                                  //     //     builder:
+                                  //     //         (context) => const SignUpScreen(),
+                                  //     //   ),
+                                  //     // );
+                                  //   },
+                                  //   child: Text(
+                                  //     "Sign Up",
+                                  //     style: Theme.of(
+                                  //       context,
+                                  //     ).textTheme.bodyLarge!.copyWith(
+                                  //       fontWeight: FontWeight.w500,
+                                  //       color: Colors.blue,
+                                  //     ),
+                                  //   ),
+                                  // ),
                                 ],
                               ),
                             ],

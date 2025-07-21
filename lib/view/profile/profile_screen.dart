@@ -141,21 +141,21 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   }
                 },
               ),
-              _buildProfileTile(
-                icon: Icons.location_on_outlined,
-                title: "Shipping Address",
-                onTap: () {},
-              ),
-              _buildProfileTile(
-                icon: Icons.history,
-                title: "Order History",
-                onTap: () {},
-              ),
-              _buildProfileTile(
-                icon: Icons.settings,
-                title: "Settings",
-                onTap: () {},
-              ),
+              // _buildProfileTile(
+              //   icon: Icons.location_on_outlined,
+              //   title: "Shipping Address",
+              //   onTap: () {},
+              // ),
+              // _buildProfileTile(
+              //   icon: Icons.history,
+              //   title: "Order History",
+              //   onTap: () {},
+              // ),
+              // _buildProfileTile(
+              //   icon: Icons.settings,
+              //   title: "Settings",
+              //   onTap: () {},
+              // ),
               _buildProfileTile(
                 icon: Icons.logout,
                 title: "Log Out",
